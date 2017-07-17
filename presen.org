@@ -958,13 +958,13 @@ You /solved/ the symbol grounding!? / This is not finding symbols. / This isn't 
 
 + Each issue requires a different approach. LatPlan should be combined with these work.
 
-  |                        | <c>                     |
-  | Types of symbols       | addressed by            |
-  |------------------------+-------------------------|
-  | *Propositions*         | *SAE*                   |
-  | Object labels          | R-CNN (Computer Vision) |
-  | Predicates (relations) | ???                     |
-  | Actions                | Domain Acquisition      |
+  |                  | <c>                     |
+  | Types of symbols | addressed by            |
+  |------------------+-------------------------|
+  | *Propositions*   | *SAE*                   |
+  | Objects          | R-CNN (Computer Vision) |
+  | Predicates       | ???                     |
+  | Actions          | ???                     |
 
 ** Did we find symbols? Why not individual pixels? Why DL?
 
