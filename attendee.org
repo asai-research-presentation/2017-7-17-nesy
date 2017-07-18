@@ -59,3 +59,7 @@
 + *ning xie* --- student, NN
 + Michael Raymer --- phisics
 
+GPU (subsymbolic) is an acceralator for CPU (symbolic) for recognition
+
+Is CPU an accelarator for GPU / NN for computation
+

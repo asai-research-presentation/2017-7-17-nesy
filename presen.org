@@ -206,6 +206,75 @@ initial state
   #+end_alignright
   #+end_larger
 
+
+** Solving these problems: Heuristic state-space search
+
+[[png:graph]]
+
+** High-level Planning Task: State Transitions
+
+#+begin_container-fluid
+#+begin_row-fluid
+#+begin_span9
+How to represent "sliding up tile 7" ? → *actions*
+
+#+begin_quote
+Transition Rules of "sliding up":
+
++ You can slide up a tile only to an empty location.
+
++ When you slide it, the orignal location becomes empty.
+
++ New location is no longer empty, is occupied by the tile.
+#+end_quote
+#+end_span9
+#+begin_span3
+initial state
+[[png:8puzzle-standard-tile7]]
+#+end_span3
+# #+begin_span2
+# goal state
+# [[png:8puzzle-standard-goal]]
+# #+end_span2
+#+end_row-fluid
+#+begin_row-fluid
+#+begin_span12
++ When /Empty(x, y_{old}) ∧ is(panel, x, y_{new}) ∧ up(y_{new}, y_{old})/ ;
+  
+  then /¬ Empty(x,y_{old}) ∧ Empty(x,y_{new}) ∧ ¬ is(panel, x, y_{new}) ∧ is(panel, x, y_{old})/
+
++ 
+  #+begin_src lisp
+  ;; Translates to a PDDL model below:
+  (:action slide-up ...
+   :precondition (and (empty ?x ?y-old)
+                      (is ?panel ?x ?y-new) ...)
+   :effects (and (not (empty ?x ?y-old))     (empty ?x ?y-new)
+                 (not (is ?panel ?x ?y-new)) (is ?panel ?x ?y-old)))
+  #+end_src
+
+# #+begin_src lisp
+# (:action move-up
+#  :parameters (?x ?y-old ?y-new ?panel)
+#  :precondition (and (empty ?x ?y-old)
+#                     (up ?y-old ?y-new)
+#                     (is ?panel ?x ?y-new))
+#  :effects (and (not (empty ?x ?y-old))
+#                (empty ?x ?y-new)
+#                (not (is ?panel ?x ?y-new))
+#                (is ?panel ?x ?y-old)))
+# #+end_src
+#+end_span12
+#+end_row-fluid
+#+end_container-fluid
+
++ 
+  #+begin_larger
+  #+begin_alignright
+  But *where does this representation come from?*
+  #+end_alignright
+  #+end_larger
+
 ** PDDL representations come from */human encoding/*.
 
 #+begin_quote
